@@ -22,7 +22,7 @@ var
 begin
   qQuery := TControllerConexao.getInstance().daoConexao.getQuery;
   try
-    qQuery.Open('select * from produto where codigo = :codigo', [iCodigoProduto]);
+    qQuery.Open('select * from produtos where codigo = :codigo', [iCodigoProduto]);
   finally
     Result := qQuery;
   end;

@@ -11,7 +11,7 @@ type
 
     public
       property ModelProduto: TModelProduto read FModelProduto write FModelProduto;
-      function consultar: TFDQuery;
+      function consultar(produto: integer): TFDQuery;
       constructor Create;
       destructor Destroy; override;
   end;
@@ -30,9 +30,9 @@ begin
   inherited;
 end;
 
-function TControllerProduto.consultar: TFDQuery;
+function TControllerProduto.consultar(produto: integer): TFDQuery;
 begin
-  Result := FModelProduto.consultar;
+  Result := FModelProduto.consultar(produto);
 end;
 
 end.

@@ -21,7 +21,7 @@ type
       property strCidade: string read FCidade write FCidade;
       property strUF: string read FUF write FUF;
 
-      function consultar: TFDQuery;
+      function consultar(codCliente: Integer): TFDQuery;
   end;
 
 implementation
@@ -30,13 +30,13 @@ implementation
 
 uses uDAOCliente;
 
-function TModelCliente.consultar: TFDQuery;
+function TModelCliente.consultar(codCliente: Integer): TFDQuery;
 var
   daoCliente : TDAOCliente;
 begin
   daoCliente := TDAOCliente.Create;
   try
-    Result := daoCliente.consultar(1);
+    Result := daoCliente.consultar(codCliente);
   finally
     FreeAndNil(daoCliente);
   end;

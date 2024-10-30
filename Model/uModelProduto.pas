@@ -13,13 +13,15 @@ type
       FCodigo: integer;
       FDescricao: string;
       FPreco: currency;
+      FQuantidade: integer;
 
     public
       property intCodigo: Integer read FCodigo write FCodigo;
       property strDescricao: String read FDescricao write FDescricao;
       property curPreco: currency read FPreco write FPreco;
+      property intQuantidade: integer read FQuantidade write FQuantidade;
 
-      function consultar: TFDQuery;
+      function consultar(produto: integer): TFDQuery;
   end;
 
 implementation
@@ -28,13 +30,13 @@ implementation
 
 uses uDAOProduto;
 
-function TModelProduto.consultar: TFDQuery;
+function TModelProduto.consultar(produto: integer): TFDQuery;
 var
   daoProduto : TDAOProduto;
 begin
   daoProduto := TDAOProduto.Create;
   try
-    Result := daoProduto.consultar(1);
+    Result := daoProduto.consultar(produto);
   finally
     FreeAndNil(daoProduto);
   end;

@@ -11,7 +11,7 @@ type
 
     public
       property ModelCliente: TModelCliente read FModelCliente write FModelCliente;
-      function consultar: TFDQuery;
+      function consultar(codCliente: Integer): TFDQuery;
       constructor Create;
       destructor Destroy; override;
   end;
@@ -30,9 +30,9 @@ begin
   inherited;
 end;
 
-function TControllerCliente.consultar: TFDQuery;
+function TControllerCliente.consultar(codCliente: Integer): TFDQuery;
 begin
-  Result := FModelCliente.consultar;
+  Result := FModelCliente.consultar(codCliente);
 end;
 
 end.
